@@ -17,7 +17,7 @@ RUN chown -R developer /usr/local/lib/ruby
 USER developer
 
 RUN mkdir ~/.gem_local && echo 'export GEM_HOME="$HOME/.gem_local"' >> ~/.bashrc
-RUN echo 'export PATH="$HOME/.gem_local/bin:$PATH"' >> ~/.bashrc
+RUN echo 'export PATH="$HOME/bin:$HOME/.gem_local/bin:$PATH"' >> ~/.bashrc
 
 RUN echo "cd /data" >> ~/.bashrc
 RUN echo "gem: --no-ri --no-rdoc" > ~/.gemrc
