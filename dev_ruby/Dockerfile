@@ -1,9 +1,10 @@
 FROM fedora:latest
 MAINTAINER alex@alexblackie.com
 
-RUN dnf install -y "@C Development Tools and Libraries" \
-	zlib-devel libyaml-devel openssl-devel gdbm-devel readline-devel ncurses-devel libffi-devel \
+RUN dnf install -y "@C Development Tools and Libraries" patch \
+	zlib-devel libyaml-devel openssl-devel gdbm-devel readline-devel ncurses-devel libffi-devel curl-devel \
 	nodejs \
+	libxslt-devel libxml2-devel \
 	postgresql-devel sqlite-devel mariadb-devel \
 	git
 
