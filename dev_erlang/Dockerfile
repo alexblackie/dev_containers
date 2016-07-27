@@ -11,6 +11,5 @@ USER developer
 RUN echo "cd /data" >> ~/.bashrc
 
 VOLUME /data
-VOLUME /home/developer/.cache/rebar3
 
 ENTRYPOINT ["/bin/bash"]
