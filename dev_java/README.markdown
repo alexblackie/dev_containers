@@ -2,14 +2,7 @@
 
 This provides a Java 8 runtime under Fedora with Maven already installed.
 
-Usage of this container is fairly standard, below is how I organize things.
-
-```
-$ mkdir ~/.maven/projectname
-$ chcon -Rt svirt_sandbox_file_t ~/.maven/projectname
-$ docker run -it --rm \
-	-v `pwd`:/data
-	-v ~/.maven/projectname:/home/developer/.m2
-	-p 8080:8080
-	alexblackie/dev_java -lc "mvn compile jetty:run"
-```
+Maven is configured to store its cache/settings under `/data/.m2` in the
+container (so make sure `$(pwd)/.m2` is ignored from your version control). This
+is to avoid having to mount a second volume just for Maven, or have the caches
+blown away every container restart.

@@ -8,7 +8,9 @@ USER developer
 
 RUN echo "cd /data" >> ~/.bashrc
 
+RUN mkdir -p /home/developer/.m2
+COPY settings.xml /home/developer/.m2/settings.xml
+
 VOLUME /data
-VOLUME /home/developer/.m2
 
 ENTRYPOINT ["/bin/bash"]
