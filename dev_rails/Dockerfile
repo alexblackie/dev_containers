@@ -1,7 +1,7 @@
 FROM alexblackie/dev_ruby:latest
 
 USER root
-RUN dnf install -y fontconfig bzip2
+RUN dnf install -y fontconfig bzip2 ImageMagick
 
 USER developer
 RUN mkdir /home/developer/bin && \
