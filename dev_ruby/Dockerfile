@@ -6,7 +6,7 @@ RUN dnf install -y "@C Development Tools and Libraries" patch \
 	nodejs \
 	libxslt-devel libxml2-devel \
 	postgresql-devel sqlite-devel mariadb-devel \
-	git
+	git file
 
 RUN curl -Lo /tmp/ruby.tar.gz https://cache.ruby-lang.org/pub/ruby/2.3/ruby-2.3.1.tar.gz
 RUN tar -zxf /tmp/ruby.tar.gz -C /tmp/ && cd /tmp/ruby-2.3.1 && \
