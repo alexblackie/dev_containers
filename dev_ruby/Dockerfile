@@ -14,7 +14,14 @@ RUN tar -zxf /tmp/ruby.tar.gz -C /tmp/ && cd /tmp/ruby-2.3.1 && \
 ##
 # Install common required packages or headers not required to compile Ruby
 ##
-RUN dnf install -y nodejs libxslt-devel libxml2-devel postgresql-devel sqlite-devel mariadb-devel git file fontconfig bzip2 ImageMagick
+RUN dnf install -y nodejs libxslt-devel libxml2-devel postgresql-devel sqlite-devel mariadb-devel git file fontconfig bzip2 ImageMagick fontconfig
+
+##
+# Install PhantomJS for feature test suites
+RUN curl -Lo /tmp/phantomjs.tar.bz2 https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2 && \
+	tar -xjf /tmp/phantomjs.tar.bz2 -C /tmp && \
+	mv /tmp/phantomjs-2.1.1-linux-x86_64/bin/phantomjs /usr/local/bin/phantomjs && \
+	rm /tmp/phantomjs.tar.bz2
 
 ##
 # Set up development environment configuration
@@ -39,13 +46,6 @@ RUN echo "gem: --no-ri --no-rdoc" > ~/.gemrc
 RUN mkdir ~/.bundle && echo -e "BUNDLE_DISABLE_LOCAL_BRANCH_CHECK: 'true'\nBUNDLE_PATH: vendor/bundle\nBUNDLE_DISABLE_SHARED_GEMS: 'true'\n" > ~/.bundle/config
 
 RUN /bin/bash -lc "gem install bundler"
-
-##
-# Install PhantomJS for feature test suites
-RUN mkdir /home/developer/bin && \
-	curl -Lo /tmp/phantomjs.tar.bz2 https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2 && \
-	tar -xjf /tmp/phantomjs.tar.bz2 -C /tmp && \
-	mv /tmp/phantomjs-2.1.1-linux-x86_64/bin/phantomjs /home/developer/bin/phantomjs
 
 ##
 # General container settings
