@@ -1,7 +1,8 @@
 FROM fedora:latest
 MAINTAINER alex@alexblackie.com
 
-RUN dnf install -y "@C Development Tools and Libraries" golang golang-godoc golang-docs git
+RUN dnf install -y "@C Development Tools and Libraries" golang golang-godoc golang-docs git && \
+	dnf clean all
 
 RUN useradd -m developer
 USER developer
