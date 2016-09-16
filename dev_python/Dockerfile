@@ -1,7 +1,7 @@
 FROM fedora:latest
 MAINTAINER alex@alexblackie.com
 
-RUN dnf install -y "@C Development Tools and Libraries" git python3 python3-pip
+RUN dnf install -y "@C Development Tools and Libraries" git python3 python3-pip redhat-rpm-config
 
 RUN ln -s /usr/bin/pip3 /usr/bin/pip
 
