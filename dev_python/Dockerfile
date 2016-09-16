@@ -18,6 +18,8 @@ RUN mkdir /home/developer/.pip && \
 
 RUN echo "cd /data" >> /home/developer/.bashrc
 
+ENV PYTHONPATH "/data/.pip_cache"
+
 VOLUME /data
 
 ENTRYPOINT ["/bin/bash"]
