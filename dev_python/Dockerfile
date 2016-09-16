@@ -7,6 +7,8 @@ RUN dnf install -y "@C Development Tools and Libraries" git python3 python3-pip 
 RUN ln -s /usr/bin/pip3 /usr/bin/pip && \
 	ln -s /usr/bin/python3 /usr/bin/python
 
+RUN pip install --upgrade pip
+
 RUN useradd -m developer
 USER developer
 
