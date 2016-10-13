@@ -1,7 +1,8 @@
 # Development Containers
 
-Currently a WIP experiment -- I'm attempting to move my development environments
-into isolated Docker environments.
+[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
+
+Isolated development environments in Docker containers.
 
 ## Usage
 
