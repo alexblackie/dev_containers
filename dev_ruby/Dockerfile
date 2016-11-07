@@ -39,9 +39,6 @@ USER developer
 RUN mkdir ~/.gem_local && echo 'export GEM_HOME="$HOME/.gem_local"' >> ~/.bashrc
 RUN echo 'export PATH="$HOME/bin:$HOME/.gem_local/bin:$PATH"' >> ~/.bashrc
 
-# Automatically enter the mounted application root
-RUN echo "cd /data" >> ~/.bashrc
-
 # Speed up gem installs by disabling ri and rdoc
 RUN echo "gem: --no-ri --no-rdoc" > ~/.gemrc
 
@@ -51,9 +48,17 @@ RUN mkdir ~/.bundle && \
 
 RUN /bin/bash -lc "gem install bundler"
 
+# Switch back to root for initialisation
+# we `su` to developer manually
+USER root
+
 ##
 # General container settings
 ##
 
+ADD dockerinit.sh /usr/local/bin/dockerinit.sh
+
 VOLUME /data
-ENTRYPOINT ["/bin/bash"]
+
+CMD ["/bin/bash"]
+ENTRYPOINT ["/usr/local/bin/dockerinit.sh"]
