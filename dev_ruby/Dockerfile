@@ -7,7 +7,7 @@ ARG RUBY_MINOR=1
 ##
 # Install tools and dependencies
 ##
-RUN dnf install -y tar gcc make binutils glibc-devel patch \
+RUN dnf install -y tar gcc gcc-c++ make binutils glibc-devel patch \
 	zlib-devel libyaml-devel openssl-devel gdbm-devel readline-devel ncurses-devel libffi-devel curl-devel \
 	nodejs libxslt-devel libxml2-devel postgresql-devel sqlite-devel mariadb-devel git file fontconfig bzip2 ImageMagick && \
 	dnf clean all
