@@ -1,8 +1,8 @@
 FROM fedora:latest
 MAINTAINER alex@alexblackie.com
 
-ENV RUBY_MAJOR 2.3
-ENV RUBY_MINOR 1
+ARG RUBY_MAJOR=2.3
+ARG RUBY_MINOR=1
 
 ##
 # Install tools and dependencies
