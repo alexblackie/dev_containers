@@ -1,6 +1,9 @@
 FROM fedora:latest
 MAINTAINER alex@alexblackie.com
 
+ENV RUBY_MAJOR 2.3
+ENV RUBY_MINOR 1
+
 ##
 # Install tools and dependencies
 ##
@@ -13,10 +16,10 @@ RUN dnf install -y tar gcc make binutils glibc-devel patch \
 # Install a Ruby by compiling from source
 ##
 
-RUN curl -Lo /tmp/ruby.tar.gz https://cache.ruby-lang.org/pub/ruby/2.3/ruby-2.3.1.tar.gz
-RUN tar -zxf /tmp/ruby.tar.gz -C /tmp/ && cd /tmp/ruby-2.3.1 && \
+RUN curl -Lo /tmp/ruby.tar.gz https://cache.ruby-lang.org/pub/ruby/$RUBY_MAJOR/ruby-$RUBY_MAJOR.$RUBY_MINOR.tar.gz
+RUN tar -zxf /tmp/ruby.tar.gz -C /tmp/ && cd /tmp/ruby-$RUBY_MAJOR.$RUBY_MINOR && \
 	./configure && make && make install && \
-	rm -rf /tmp/ruby-2.3.1 /tmp/ruby.tar.gz
+	rm -rf /tmp/ruby-$RUBY_MAJOR.$RUBY_MINOR /tmp/ruby.tar.gz
 
 ##
 # Install PhantomJS for feature test suites
