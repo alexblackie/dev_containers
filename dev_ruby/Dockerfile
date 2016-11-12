@@ -59,7 +59,7 @@ USER root
 # General container settings
 ##
 
-ADD dockerinit.sh /usr/local/bin/dockerinit.sh
+ADD ../dockerinit.sh /usr/local/bin/dockerinit.sh
 
 VOLUME /data
 
