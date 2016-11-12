@@ -14,7 +14,7 @@ USER root
 
 VOLUME /data
 
-ADD ../dockerinit.sh /usr/local/bin/dockerinit.sh
+ADD dockerinit.sh /usr/local/bin/dockerinit.sh
 
 CMD ["/bin/bash"]
 ENTRYPOINT ["/usr/local/bin/dockerinit.sh"]

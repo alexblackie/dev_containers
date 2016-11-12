@@ -13,7 +13,7 @@ build them yourself.
 For example, for `dev_ruby`:
 
 ```
-$ docker build -t my_dev_ruby dev_ruby
+$ docker build -t my_dev_ruby -f dev_ruby/Dockerfile .
 ```
 
 Some containers support build-time arguments, for example:
@@ -22,7 +22,7 @@ Some containers support build-time arguments, for example:
 $ docker build -t my_old_dev_ruby \
     --build-arg RUBY_MAJOR=2.1 \
 	--build-arg RUBY_MINOR=10 \
-	dev_ruby
+	-f dev_ruby/Dockerfile .
 ```
 
 ---
