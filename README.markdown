@@ -1,6 +1,6 @@
 # Development Containers
 
-[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
+[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/) [![Build Status](https://ci.blackieops.com/buildStatus/icon?job=dev_containers-autobuild)](https://ci.blackieops.com/job/dev_containers-autobuild/)
 
 Isolated development environments in Docker containers.
 
