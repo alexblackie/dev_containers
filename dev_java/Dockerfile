@@ -8,7 +8,7 @@ RUN useradd -m developer
 USER developer
 
 RUN mkdir -p /home/developer/.m2
-COPY settings.xml /home/developer/.m2/settings.xml
+COPY dev_java/settings.xml /home/developer/.m2/settings.xml
 
 USER root
 
