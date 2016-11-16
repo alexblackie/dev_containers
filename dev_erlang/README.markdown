@@ -3,7 +3,7 @@
 ## Usage
 
 ```
-$ docker run -it --rm -v `pwd`:/data alexblackie/dev_erlang -lc 'rebar3 shell'
+$ docker run -it --rm -v `pwd`:/data alexblackie/dev_erlang 'rebar3 shell'
 ```
 
 To reduce churn, have rebar throw its cache somewhere in `/data` and VCS-ignore
