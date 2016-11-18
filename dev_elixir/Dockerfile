@@ -4,7 +4,7 @@ ARG ELIXIR_VERSION=1.3.4
 
 RUN dnf install -y unzip && dnf clean all
 
-RUN curl -Lo /tmp/elixir.zip https://github.com/elixir-lang/elixir/releases/download/v1.3.4/Precompiled.zip && \
+RUN curl -Lo /tmp/elixir.zip https://github.com/elixir-lang/elixir/releases/download/v$ELIXIR_VERSION/Precompiled.zip && \
 	mkdir /usr/local/elixir && \
 	unzip -d /usr/local/elixir /tmp/elixir.zip && \
 	rm /tmp/elixir.zip
