@@ -1,7 +1,7 @@
 FROM fedora:latest
 MAINTAINER alex@alexblackie.com
 
-RUN dnf install -y java-1.8.0-openjdk maven && \
+RUN dnf install -y java-1.8.0-openjdk maven gradle && \
 	dnf clean all
 
 RUN useradd -m developer
