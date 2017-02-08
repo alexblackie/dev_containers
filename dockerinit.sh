@@ -1,5 +1,9 @@
 #!/bin/bash
 
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export LANGUAGE=en_us.UTF-8
+
 # Change the UID based on volume, since we can't assume UID 1000 will match
 # everyone's situation. This is especially not true for enterprise logins.
 USER_ID=$(stat -c '%u' /data)
