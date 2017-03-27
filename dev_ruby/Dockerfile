@@ -1,8 +1,8 @@
 FROM fedora:latest
 MAINTAINER alex@alexblackie.com
 
-ENV PATH $HOME/bin:$HOME/.gem_local/bin:$PATH
-ENV GEM_HOME $HOME/.gem_local
+ENV PATH /home/developer/bin:/home/developer/.gem_local/bin:$PATH
+ENV GEM_HOME /home/developer/.gem_local
 
 ARG RUBY_MAJOR=2.3
 ARG RUBY_MINOR=1
