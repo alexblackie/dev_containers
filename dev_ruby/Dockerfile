@@ -1,6 +1,9 @@
 FROM fedora:latest
 MAINTAINER alex@alexblackie.com
 
+ENV PATH $HOME/bin:$HOME/.gem_local/bin:$PATH
+ENV GEM_HOME $HOME/.gem_local
+
 ARG RUBY_MAJOR=2.3
 ARG RUBY_MINOR=1
 
@@ -37,19 +40,13 @@ RUN curl -Lo /tmp/phantomjs.tar.bz2 https://assets.alexblackie.com/mirror/phanto
 RUN useradd -m developer
 USER developer
 
-# Add `/home/developer/.gem_local` for sudo-less global gem installs. Note:
-# this will be wiped once the container quits, except in this file.
-RUN mkdir ~/.gem_local && echo 'export GEM_HOME="$HOME/.gem_local"' >> ~/.bashrc
-RUN echo 'export PATH="$HOME/bin:$HOME/.gem_local/bin:$PATH"' >> ~/.bashrc
-
 # Speed up gem installs by disabling ri and rdoc
 RUN echo "gem: --no-ri --no-rdoc" > ~/.gemrc
 
 # Add bundler config to use `/data/vendor/bundle` as the gem install path
 RUN mkdir ~/.bundle && \
 	echo -e "BUNDLE_DISABLE_LOCAL_BRANCH_CHECK: 'true'\nBUNDLE_PATH: vendor/bundle\nBUNDLE_DISABLE_SHARED_GEMS: 'true'\n" > ~/.bundle/config
-
-RUN /bin/bash -lc "gem install bundler"
+RUN gem install bundler
 
 # Switch back to root for initialisation
 # we `su` to developer manually
