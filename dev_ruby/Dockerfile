@@ -1,8 +1,6 @@
 FROM fedora:latest
 MAINTAINER alex@alexblackie.com
 
-ENV PATH /home/developer/bin:$PATH
-
 ARG RUBY_MAJOR=2.3
 ARG RUBY_MINOR=1
 
@@ -35,6 +33,9 @@ RUN curl -Lo /tmp/phantomjs.tar.bz2 https://assets.alexblackie.com/mirror/phanto
 # Set up development environment configuration
 ##
 
+# Install bundler globally
+RUN gem install bundler
+
 # Add unprivileged user to run as
 RUN useradd -m developer
 USER developer
@@ -45,7 +46,6 @@ RUN echo "gem: --no-ri --no-rdoc" > ~/.gemrc
 # Add bundler config to use `/data/vendor/bundle` as the gem install path
 RUN mkdir ~/.bundle && \
 	echo -e "BUNDLE_DISABLE_LOCAL_BRANCH_CHECK: 'true'\nBUNDLE_PATH: vendor/bundle\nBUNDLE_DISABLE_SHARED_GEMS: 'true'\n" > ~/.bundle/config
-RUN gem install bundler
 
 # Switch back to root for initialisation
 # we `su` to developer manually
